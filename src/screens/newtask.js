@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 const NewTaskScreen = ({ navigation }) => {
-  const [taskName, setTaskName] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [priority, setPriority] = useState('');
+  const [taskName, setTaskName] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [priority, setPriority] = useState("");
 
   const handleAddTask = () => {
     console.log("Navigating to ToDoList screen");
     const newTask = { text: taskName, checked: false };
-    navigation.navigate('TodoList', { newTask });
-    
+    navigation.navigate("ToDoList", { newTask });
   };
 
   return (
@@ -34,7 +39,7 @@ const NewTaskScreen = ({ navigation }) => {
         onChangeText={setPriority}
       />
       <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
-        <Text style={{ color: 'white' }}>Add Task</Text>
+        <Text style={{ color: "white" }}>Add Task</Text>
       </TouchableOpacity>
     </View>
   );
@@ -44,19 +49,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 50,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   input: {
     padding: 10,
     marginBottom: 20,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 5,
   },
   addButton: {
-    backgroundColor: '#749BBF',
+    backgroundColor: "#749BBF",
     padding: 15,
-    alignItems: 'center',
+    alignItems: "center",
     borderRadius: 15,
   },
 });

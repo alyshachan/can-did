@@ -7,13 +7,19 @@ import NewTaskScreen from "./src/screens/newtask";
 import Camera from "./src/screens/camera";
 import ConfirmPhoto from "./src/screens/confirmphoto";
 import UploadPhoto from "./src/screens/uploadphoto";
+import WelcomePage from "./src/screens/welcome";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Friends">
+      <Stack.Navigator initialRouteName="WelcomePage">
+        <Stack.Screen
+          name="WelcomePage"
+          component={WelcomePage}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Friends"
           component={Friends}

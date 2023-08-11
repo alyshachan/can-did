@@ -20,7 +20,7 @@ const Friends = ({ username }) => {
   return (
     <ScrollView style={styles.scrollView}>
       <TouchableOpacity onPress={handleToDoList} style={styles.button}>
-        <Text style={styles.buttonText}>Upload Photo</Text>
+        <Text style={styles.buttonText}>To Do List</Text>
       </TouchableOpacity>
 
       {posts.map((post) => (

@@ -5,7 +5,9 @@ import * as ImagePicker from "expo-image-picker";
 import Button from "../components/button";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFocused } from "@react-navigation/native";
-
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 export let capture = [];
 
 export default function Add({ picture }) {

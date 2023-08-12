@@ -1,3 +1,10 @@
+/*
+This page allows users to create a new task added
+to their to-do list. Users can enter a task name,
+due date, and select a priority level
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import React, { useState } from "react";
 import {
   View,
@@ -8,23 +15,27 @@ import {
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
+/* Setting up backend for added tasks */
 const NewTaskScreen = ({ navigation }) => {
   const [taskName, setTaskName] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState("");
   const [showPicker, setShowPicker] = useState(false);
 
+  /* Handler to create a new task display on the ToDoList page */
   const handleAddTask = () => {
     const newTask = { text: taskName, checked: false };
     navigation.navigate("ToDoList", { newTask });
   };
 
+  /* Create Priority Selection */
   const togglePicker = () => {
     setShowPicker(!showPicker);
   };
 
   return (
     <View style={styles.container}>
+      {/* Input for Task Name and Due Date */}
       <TextInput
         style={styles.input}
         placeholder="Task Name"
@@ -37,6 +48,8 @@ const NewTaskScreen = ({ navigation }) => {
         value={dueDate}
         onChangeText={setDueDate}
       />
+
+      {/* Priority Selection */}
       <TouchableOpacity
         style={[
           styles.input,
@@ -60,13 +73,16 @@ const NewTaskScreen = ({ navigation }) => {
           <Picker.Item label="Low" value="low" />
         </Picker>
       )}
+
+      {/* Add Task Button */}
       <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
-        <Text style={{ color: "white"}}>Add Task</Text>
+        <Text style={{ color: "white" }}>Add Task</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,3 +1,13 @@
+/*
+This page has the detail of each post displayed
+on the Friends page
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer, Simon Sturmer
+
+References:
+Simon Sturmer - Taught in SEEDS 2023 how to implement data into our code
+https://github.com/class-labs/insta-rn/tree/final
+*/
 export const posts = [
   {
     id: "qd8t0k3y1",

@@ -1,9 +1,9 @@
-//
-//  Signin:up View.Js
-//  can-did
-//
-//  Created by Shane Zhu on 7/24/23.
-//
+/*
+This page allows the user to sign in to Can-Did
+with their email and password
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
@@ -24,6 +24,7 @@ const SignInUpView = () => {
   const colorScheme = "light"; // Adjust based on your color scheme logic
   const navigation = useNavigation();
 
+  /* Toggle between Sign In and Sign Up */
   const toggleAuthMode = () => {
     setAuthMode(
       authMode === AuthMode.SignIn ? AuthMode.SignUp : AuthMode.SignIn
@@ -33,10 +34,12 @@ const SignInUpView = () => {
     }
   };
 
+  /* Switch between Sign In and Sign Up text */
   const authButtonText = authMode === AuthMode.SignIn ? "Sign In" : "Sign Up";
 
   return (
     <View style={{ padding: 20, marginVertical: 150 }}>
+      {/* Can-Did Logo */}
       <Image
         source={{
           uri: "https://i.ibb.co/9q0rbZZ/Candid-Logo.png",
@@ -48,6 +51,8 @@ const SignInUpView = () => {
           alignSelf: "center",
         }}
       />
+
+      {/* Sign In header text */}
       <Text
         style={{
           fontSize: 30,
@@ -59,6 +64,8 @@ const SignInUpView = () => {
       >
         Sign In
       </Text>
+
+      {/* Email text input */}
       <TextInput
         style={{
           padding: 10,
@@ -73,6 +80,8 @@ const SignInUpView = () => {
         autoCapitalize="none"
         autoCorrect={false}
       />
+
+      {/* Password text input */}
       <TextInput
         style={{
           padding: 10,
@@ -86,6 +95,8 @@ const SignInUpView = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
+
+      {/* Sign In button */}
       <TouchableOpacity
         style={{
           padding: 10,
@@ -111,6 +122,8 @@ const SignInUpView = () => {
           Sign In
         </Text>
       </TouchableOpacity>
+
+      {/* Switch to CreateAccount button */}
       <TouchableOpacity
         style={{ padding: 10 }}
         onPress={() => navigation.navigate("CreateAccountView")}
@@ -125,6 +138,7 @@ const SignInUpView = () => {
           Don't have an account? Sign Up
         </Text>
       </TouchableOpacity>
+
       {/* Render CreateAccountView if isCreateAccountViewPresented is true */}
       {isCreateAccountViewPresented}
     </View>

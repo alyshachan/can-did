@@ -1,3 +1,9 @@
+/*
+This page shows the Friends feed, displaying you and all
+your friends' posts and captions.
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import { useNavigation } from "@react-navigation/native";
 import {
   Image,
@@ -15,10 +21,14 @@ const Friends = ({ username }) => {
 
   return (
     <ScrollView style={styles.scrollView}>
+      {/* Loop through all posts through posts.js */}
       {posts.map((post) => (
         <View style={styles.YstackFull} key={post.id}>
+          {/* Display photo */}
           <View style={styles.Xstack}>
             <Image style={styles.image} source={{ uri: post.photo }} />
+
+            {/* Display username, time of completion, caption, add comment */}
             <View style={styles.Ystack}>
               <Text style={styles.usernameText}>@{post.author.username}</Text>
               <Text style={styles.timeText}>{post.uploadTime}</Text>
@@ -26,6 +36,8 @@ const Friends = ({ username }) => {
               <Text style={styles.commentText}>Add a comment...</Text>
             </View>
           </View>
+
+          {/* Divider between posts */}
           <View
             style={{
               borderBottomColor: "black",
@@ -42,6 +54,7 @@ const Friends = ({ username }) => {
 };
 export default Friends;
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,

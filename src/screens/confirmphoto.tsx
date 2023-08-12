@@ -1,3 +1,9 @@
+/*
+This page asks the user if their previous selected photo
+from the Camera page is their confirmed picture to be posted.
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { capture } from "./camera";
@@ -5,18 +11,21 @@ import { capture } from "./camera";
 const ConfirmPhoto = ({ confirmation }) => {
   const navigation = useNavigation();
 
+  /* Navigation handlers to UploadPhoto or Camera page */
   const handleUploadPhoto = () => {
-    navigation.navigate("UploadPhoto"); // Navigate to the ToDoList screen
+    navigation.navigate("UploadPhoto");
   };
-
   const handleRetakeTask = () => {
-    navigation.navigate("Camera"); // Navigate to the ToDoList screen
+    navigation.navigate("Camera");
   };
 
   return (
     <View>
+      {/* Selected image display and confirmation text */}
       <Image style={styles.image} source={{ uri: capture }} />
       <Text style={styles.text}>CONFIRM PICTURE?</Text>
+
+      {/* Share and Retake buttons */}
       <TouchableOpacity
         onPress={handleUploadPhoto}
         style={styles.confirmButton}
@@ -30,6 +39,7 @@ const ConfirmPhoto = ({ confirmation }) => {
   );
 };
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   image: {
     width: 232.5,

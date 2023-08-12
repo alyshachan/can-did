@@ -1,9 +1,9 @@
-//
-//  CreateAccount View.Js
-//  can-did
-//
-//  Created by Shane Zhu on 7/25/23.
-//
+/*
+This page allows the user to create an account with
+their name, email, and password.
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 
 import React, { useState } from "react";
 import { Image, View, Text, TextInput, TouchableOpacity } from "react-native";
@@ -27,6 +27,7 @@ const CreateAccountView = () => {
         marginVertical: 80,
       }}
     >
+      {/* Can-Did Logo */}
       <Image
         source={{
           uri: "https://i.ibb.co/9q0rbZZ/Candid-Logo.png",
@@ -38,6 +39,8 @@ const CreateAccountView = () => {
           alignSelf: "center",
         }}
       />
+
+      {/* Create Account Header */}
       <View
         style={{
           maxWidth: "100%",
@@ -49,6 +52,7 @@ const CreateAccountView = () => {
           shadowRadius: 5,
         }}
       >
+        {/* Create Account Header Text */}
         <Text
           style={{
             fontSize: 30,
@@ -62,6 +66,7 @@ const CreateAccountView = () => {
         </Text>
       </View>
       <View>
+        {/* First name text input */}
         <TextInput
           style={{
             padding: 10,
@@ -74,7 +79,7 @@ const CreateAccountView = () => {
           value={firstName}
           onChangeText={setFirstName}
         />
-
+        {/* Last name text input */}
         <TextInput
           style={{
             padding: 10,
@@ -87,7 +92,7 @@ const CreateAccountView = () => {
           value={lastName}
           onChangeText={setLastName}
         />
-
+        {/* Email text input */}
         <TextInput
           style={{
             padding: 10,
@@ -100,7 +105,7 @@ const CreateAccountView = () => {
           value={email}
           onChangeText={setEmail}
         />
-
+        {/* Password text input */}
         <TextInput
           style={{
             padding: 10,
@@ -114,7 +119,7 @@ const CreateAccountView = () => {
           onChangeText={setPassword}
           secureTextEntry
         />
-
+        {/* Confirm password text input */}
         <TextInput
           style={{
             padding: 10,
@@ -129,6 +134,7 @@ const CreateAccountView = () => {
           secureTextEntry
         />
       </View>
+      {/* Console Log for text input */}
       <TouchableOpacity
         style={{
           padding: 10,
@@ -144,6 +150,7 @@ const CreateAccountView = () => {
           console.log(`Confirm Password: ${confirmPassword}`);
         }}
       >
+        {/* Create Account button */}
         <Text
           onPress={() => navigation.navigate("WelcomePage")}
           style={{
@@ -156,6 +163,8 @@ const CreateAccountView = () => {
           Create Account
         </Text>
       </TouchableOpacity>
+
+      {/* Switch to SignUp button */}
       <TouchableOpacity
         style={{ padding: 10 }}
         onPress={() => navigation.navigate("SignInUpView")}

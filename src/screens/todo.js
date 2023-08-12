@@ -1,3 +1,11 @@
+/*
+This page shows user's to-do list. Each task is created
+and imported from the NewTask page, and displayed on this
+to-do list with a checkbox to mark off when tasks are
+completed
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -13,7 +21,6 @@ import ToDoOptionsModal from "../components/ToDoOptionsModal";
 import { FontAwesome } from "@expo/vector-icons";
 
 const ToDoList = ({ route }) => {
-  // States
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [showModal, setShowModal] = useState(false);
@@ -21,6 +28,7 @@ const ToDoList = ({ route }) => {
 
   const navigation = useNavigation();
 
+  /* Selected Option for Add New Task or Camera*/
   useEffect(() => {
     if (selectedOption !== null) {
       handleModalAction(); // Handle the modal action
@@ -28,12 +36,14 @@ const ToDoList = ({ route }) => {
     }
   }, [selectedOption]);
 
+  /* Add task to to-do list from new task page*/
   useEffect(() => {
     if (route.params && route.params.newTask) {
       setTodos([...todos, route.params.newTask]);
     }
   }, [route.params]);
 
+  /* Toggle checkbox selection checkmark*/
   const handleToggleTodo = (index) => {
     const updatedTodos = todos.map((todo, i) =>
       i === index ? { ...todo, checked: !todo.checked } : todo
@@ -43,6 +53,7 @@ const ToDoList = ({ route }) => {
 
   const renderTodoItem = ({ item, index }) => {
     return (
+      /* Checkbox List and Task Name*/
       <TouchableOpacity
         style={styles.listItemContainer}
         onPress={() => handleToggleTodo(index)}
@@ -66,22 +77,25 @@ const ToDoList = ({ route }) => {
       </TouchableOpacity>
     );
   };
+
+  /* Plus button displays create task and camera option and blues background */
   const handlePlusClick = () => {
     setShowModal(true);
     setSelectedOption(null);
   };
 
+  /* Display Add Task and Camera options */
   const handleModalAction = () => {
     if (selectedOption === "uploadPhoto") {
       navigation.navigate("Camera");
       setShowModal(false);
-  
     } else if (selectedOption === "addNewTask") {
       navigation.navigate("NewTaskScreen");
       setShowModal(false);
     }
   };
 
+  /* Have selected option navigate to selected page */
   useEffect(() => {
     if (selectedOption) {
       handleModalAction();
@@ -91,16 +105,21 @@ const ToDoList = ({ route }) => {
 
   return (
     <View style={styles.container}>
+      {/* Checkbox List Display */}
       <FlatList
         data={todos}
         renderItem={renderTodoItem}
         keyExtractor={(item, index) => index.toString()}
       />
+
+      {/* Plus Button */}
       <View style={styles.inputContainer}>
         <TouchableOpacity onPress={handlePlusClick} style={styles.addButton}>
           <FontAwesome name="plus" size={30} color="white" />
         </TouchableOpacity>
       </View>
+
+      {/* Plus Button Options: Add Task and Camera */}
       <ToDoOptionsModal
         isVisible={showModal}
         onClose={() => setShowModal(false)}
@@ -111,6 +130,7 @@ const ToDoList = ({ route }) => {
   );
 };
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,

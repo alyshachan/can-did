@@ -1,7 +1,12 @@
+/*
+This page manages the header navigation and page navigations.
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import React from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import ToDoList from "./src/screens/todo";
 import Friends from "./src/screens/friends";
@@ -18,28 +23,33 @@ import { useFonts } from "expo-font";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  /* Use custom font */
   const [fontsLoaded] = useFonts({
-    'GreatVibes-Regular': require("./assets/GreatVibes-Regular.ttf"),
+    "GreatVibes-Regular": require("./assets/GreatVibes-Regular.ttf"),
   });
   return (
     <NavigationContainer>
+      {/* welcome.js navigation */}
       <Stack.Navigator initialRouteName="WelcomeView">
         <Stack.Screen
           name="WelcomePage"
           component={WelcomePage}
           options={{ headerShown: false }}
         />
+        {/* friends.tsx naviation */}
         <Stack.Screen
           name="Friends"
           component={Friends}
           options={({ navigation }) => ({
             title: "FRIENDS",
+            /* Header color to blue, bold font */
             headerStyle: {
               backgroundColor: "#749BBF",
             },
             headerTitleStyle: {
               fontWeight: "bold",
             },
+            /* Friends, ToDoList, NewTask top navigation */
             headerRight: () => (
               <View style={styles.Xstack}>
                 <TouchableOpacity
@@ -71,17 +81,20 @@ export default function App() {
             ),
           })}
         />
+        {/* todo.js naviation */}
         <Stack.Screen
           name="ToDoList"
           component={ToDoList}
           options={({ navigation }) => ({
             title: "TO-DO'S",
+            /* Header color to blue, bold font */
             headerStyle: {
               backgroundColor: "#749BBF",
             },
             headerTitleStyle: {
               fontWeight: "bold",
             },
+            /* Friends, ToDoList, NewTask top navigation */
             headerRight: () => (
               <View style={styles.Xstack}>
                 <TouchableOpacity
@@ -113,17 +126,20 @@ export default function App() {
             ),
           })}
         />
+        {/* newtask.js naviation */}
         <Stack.Screen
           name="NewTaskScreen"
           component={NewTaskScreen}
           options={({ navigation }) => ({
             title: "ADD TASK",
+            /* Header color to blue, bold font */
             headerStyle: {
               backgroundColor: "#749BBF",
             },
             headerTitleStyle: {
               fontWeight: "bold",
             },
+            /* Friends, ToDoList, NewTask top navigation */
             headerRight: () => (
               <View style={styles.Xstack}>
                 <TouchableOpacity
@@ -155,19 +171,33 @@ export default function App() {
             ),
           })}
         />
+        {/* camera.tsx naviation */}
         <Stack.Screen name="Camera" component={Camera} />
-        <Stack.Screen name="ConfirmPhoto" component={ConfirmPhoto} />
-        <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
+        {/* confirmphoto.tsx naviation */}
+        <Stack.Screen
+          name="ConfirmPhoto"
+          component={ConfirmPhoto}
+          options={{ headerShown: false }}
+        />
+        {/* uploadphoto.tsx naviation */}
+        <Stack.Screen
+          name="UploadPhoto"
+          component={UploadPhoto}
+          options={{ headerShown: false }}
+        />
+        {/* welcomeView.js naviation */}
         <Stack.Screen
           name="WelcomeView"
           component={WelcomeView}
           options={{ headerShown: false }}
         />
+        {/* SigninView.js naviation */}
         <Stack.Screen
           name="SignInUpView"
           component={SignInUpView}
           options={{ headerShown: false }}
         />
+        {/* createAccountView.js naviation */}
         <Stack.Screen
           name="CreateAccountView"
           component={CreateAccountView}
@@ -178,6 +208,7 @@ export default function App() {
   );
 }
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   Xstack: {
     flexDirection: "row",

@@ -1,3 +1,10 @@
+/*
+This page displays the user's tasks to-do of the day
+if the task's date is selected to be the day of,
+or priority is high.
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import React, { useState } from "react";
 import {
   View,
@@ -7,14 +14,15 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome"; 
+import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 
 const WelcomePage = ({ username, activities }) => {
+  const [completedTasks, setCompletedTasks] = useState([]);
   const navigation = useNavigation();
 
-
+  /* Data of today's tasks */
   const todaystasks = [
     "Complete Physics Assignment",
     "Solve 3 leetcode questions",
@@ -23,8 +31,7 @@ const WelcomePage = ({ username, activities }) => {
     "Pick up Amazon Order",
   ];
 
-  const [completedTasks, setCompletedTasks] = useState([]);
-
+  /* Toggle checkbox selection checkmark*/
   const toggleTaskCompletion = (task) => {
     if (completedTasks.includes(task)) {
       setCompletedTasks(completedTasks.filter((item) => item !== task));
@@ -33,6 +40,7 @@ const WelcomePage = ({ username, activities }) => {
     }
   };
 
+  /* Task List Display */
   const renderTaskItem = ({ item }) => {
     const isCompleted = completedTasks.includes(item);
     return (
@@ -51,21 +59,29 @@ const WelcomePage = ({ username, activities }) => {
     );
   };
 
+  /* Navigation handlers to ToDoList */
   const handleGoToTodoList = () => {
-    navigation.navigate("ToDoList"); // Navigate to the ToDoList screen
+    navigation.navigate("ToDoList");
   };
 
   return (
     <View style={styles.container}>
+      {/* Hello User and Planned task text */}
       <Text style={styles.heading}>Hello, </Text>
       <Text style={styles.name}>Whitney!</Text>
-      <Text style={styles.subHeading}>here's what you have planned for the day:</Text>
+      <Text style={styles.subHeading}>
+        here's what you have planned for the day:
+      </Text>
+
+      {/* Display tasks and checkbox list */}
       <FlatList
         data={todaystasks}
         renderItem={renderTaskItem}
         keyExtractor={(item, index) => index.toString()}
         style={styles.taskList}
       />
+
+      {/* Go to to-do list button */}
       <TouchableOpacity onPress={handleGoToTodoList} style={styles.button}>
         <Text style={styles.buttonText}>To-Do List</Text>
       </TouchableOpacity>
@@ -73,6 +89,7 @@ const WelcomePage = ({ username, activities }) => {
   );
 };
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -88,7 +105,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 200,
   },
-  name :{
+  name: {
     fontSize: 50,
     fontFamily: "GreatVibes-Regular",
     fontWeight: "bold",
@@ -99,8 +116,8 @@ const styles = StyleSheet.create({
   subHeading: {
     fontSize: 22,
     marginTop: 120,
-    color: 'grey',
-    fontFamily: 'Times New Roman',
+    color: "grey",
+    fontFamily: "Times New Roman",
     marginBottom: 10,
   },
   taskItem: {

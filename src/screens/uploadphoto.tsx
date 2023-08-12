@@ -1,3 +1,10 @@
+/*
+This page shows after photo is confirmed and before photo is
+posted publiclly to Friends. Users select their completed task,
+and have the option to add a caption and post privately.
+
+Authors: Alysha Chan, Shane Zhu, Ibukun Adeloye, Isabella DeBoer
+*/
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
@@ -20,10 +27,12 @@ const UploadPhoto = ({ picture }) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   const navigation = useNavigation();
 
+  /* Navigation handlers to Friends */
   const handleFriends = () => {
     navigation.navigate("Friends");
   };
 
+  /* Data for task selection */
   const data = [
     { key: "1", value: "Walk the dog" },
     { key: "2", value: "study physics" },
@@ -36,13 +45,18 @@ const UploadPhoto = ({ picture }) => {
 
   return (
     <View>
+      {/* Selected image display and confirmation text */}
       <Image style={styles.image} source={{ uri: capture }} />
+
+      {/* Task Selection */}
       <View style={styles.list}>
         <SelectList
           setSelected={(val) => setSelected(val)}
           data={data}
           save="value"
         />
+
+        {/* Caption Input */}
         <Text style={styles.captionText}>Caption</Text>
         <TextInput
           style={styles.input}
@@ -50,6 +64,8 @@ const UploadPhoto = ({ picture }) => {
           value={caption}
           onChangeText={setCaption}
         />
+
+        {/* Switch for private post */}
         <View style={styles.Xstack}>
           <Text style={styles.captionText}>Post Privately</Text>
           <FontAwesome
@@ -67,6 +83,8 @@ const UploadPhoto = ({ picture }) => {
             style={styles.switch}
           />
         </View>
+
+        {/* Post to Friends button */}
         <TouchableOpacity onPress={handleFriends} style={styles.confirmButton}>
           <Text style={styles.buttonText}>Yes, share it!</Text>
         </TouchableOpacity>
@@ -75,6 +93,7 @@ const UploadPhoto = ({ picture }) => {
   );
 };
 
+/* Styles for imported elements*/
 const styles = StyleSheet.create({
   image: {
     width: 232.5,

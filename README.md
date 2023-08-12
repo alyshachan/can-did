@@ -14,7 +14,7 @@ This app was worked on by Alysha Chan, Shane Zhu, Ibukun Adeloye and Isabella De
 
 # Authors
 
-Alysha Chan (https://github.com/alyshachan)
-Shane Zhu (https://github.com/Shane-33)
-Ibukun Adeloye (https://github.com/TheYorubaCoder/)
-Isabella DeBoer (https://github.com/ideboer)
+- Alysha Chan (https://github.com/alyshachan)
+- Shane Zhu (https://github.com/Shane-33)
+- Ibukun Adeloye (https://github.com/TheYorubaCoder/)
+- Isabella DeBoer (https://github.com/ideboer)

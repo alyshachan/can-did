@@ -26,11 +26,44 @@ export default function App() {
         <Stack.Screen
           name="Friends"
           component={Friends}
-          options={{
+          options={({ navigation }) => ({
+            title: "FRIENDS",
             headerStyle: {
               backgroundColor: "#749BBF",
             },
-          }}
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <View style={styles.Xstack}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Friends")}
+                >
+                  <FontAwesome name="user" size={20} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ToDoList")}
+                >
+                  <FontAwesome
+                    name="bars"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("NewTaskScreen")}
+                >
+                  <FontAwesome
+                    name="plus"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+              </View>
+            ),
+          })}
         />
         <Stack.Screen
           name="ToDoList"
@@ -74,7 +107,48 @@ export default function App() {
             ),
           })}
         />
-        <Stack.Screen name="NewTaskScreen" component={NewTaskScreen} />
+        <Stack.Screen
+          name="NewTaskScreen"
+          component={NewTaskScreen}
+          options={({ navigation }) => ({
+            title: "ADD TASK",
+            headerStyle: {
+              backgroundColor: "#749BBF",
+            },
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <View style={styles.Xstack}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Friends")}
+                >
+                  <FontAwesome name="user" size={20} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ToDoList")}
+                >
+                  <FontAwesome
+                    name="bars"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("NewTaskScreen")}
+                >
+                  <FontAwesome
+                    name="plus"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+              </View>
+            ),
+          })}
+        />
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="ConfirmPhoto" component={ConfirmPhoto} />
         <Stack.Screen name="UploadPhoto" component={UploadPhoto} />

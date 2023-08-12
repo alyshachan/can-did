@@ -1,6 +1,8 @@
 import React from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 import ToDoList from "./src/screens/todo";
 import Friends from "./src/screens/friends";
 import NewTaskScreen from "./src/screens/newtask";
@@ -13,7 +15,6 @@ import SignInUpView from "./.vscode/Views/SigninView";
 import CreateAccountView from "./.vscode/Views/createAccountView";
 
 const Stack = createNativeStackNavigator();
-// const navigation = useNavigation();
 
 export default function App() {
   return (

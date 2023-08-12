@@ -57,7 +57,7 @@ const SignInUpView = () => {
           margin: 10,
         }}
       >
-        {authButtonText}
+        Sign In
       </Text>
       <TextInput
         style={{
@@ -108,10 +108,13 @@ const SignInUpView = () => {
             fontSize: 18,
           }}
         >
-          {authButtonText}
+          Sign In
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={{ padding: 10 }} onPress={toggleAuthMode}>
+      <TouchableOpacity
+        style={{ padding: 10 }}
+        onPress={() => navigation.navigate("CreateAccountView")}
+      >
         <Text
           style={{
             color: "#749BBF",
@@ -119,9 +122,7 @@ const SignInUpView = () => {
             textAlign: "center",
           }}
         >
-          {authMode === AuthMode.SignIn
-            ? "Don't have an account? Sign Up"
-            : "Already have an account? Sign In"}
+          Don't have an account? Sign Up
         </Text>
       </TouchableOpacity>
       {/* Render CreateAccountView if isCreateAccountViewPresented is true */}

@@ -6,7 +6,7 @@
 //
 
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Image, View, Text, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const CreateAccountView = () => {
@@ -19,10 +19,27 @@ const CreateAccountView = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#F2F2F7", padding: 16 }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#F2F2F7",
+        padding: 16,
+        marginVertical: 80,
+      }}
+    >
+      <Image
+        source={{
+          uri: "https://i.ibb.co/9q0rbZZ/Candid-Logo.png",
+        }}
+        style={{
+          width: 100,
+          height: 100,
+          resizeMode: "contain",
+          alignSelf: "center",
+        }}
+      />
       <View
         style={{
-          paddingVertical: 30,
           maxWidth: "100%",
           backgroundColor: "linear-gradient(to right, blue, purple)",
           borderRadius: 10,
@@ -34,26 +51,24 @@ const CreateAccountView = () => {
       >
         <Text
           style={{
-            fontSize: 36,
+            fontSize: 30,
             fontWeight: "bold",
-            color: "black",
-            textAlign: "center",
+            color: "#749BBF",
+            alignSelf: "center",
+            margin: 10,
           }}
         >
           Create Account
         </Text>
       </View>
-      <View style={{ marginTop: 40 }}>
+      <View>
         <TextInput
           style={{
             padding: 10,
-            borderColor: "blue",
+            borderRadius: 8,
+            borderColor: "gray",
             borderWidth: 1,
-            borderRadius: 10,
-            fontSize: 26,
-            marginVertical: 10,
-            paddingHorizontal: 20,
-            backgroundColor: "white",
+            marginVertical: 8,
           }}
           placeholder="First Name"
           value={firstName}
@@ -63,13 +78,10 @@ const CreateAccountView = () => {
         <TextInput
           style={{
             padding: 10,
-            borderColor: "blue",
+            borderRadius: 8,
+            borderColor: "gray",
             borderWidth: 1,
-            borderRadius: 10,
-            fontSize: 26,
-            marginVertical: 10,
-            paddingHorizontal: 20,
-            backgroundColor: "white",
+            marginVertical: 8,
           }}
           placeholder="Last Name"
           value={lastName}
@@ -79,13 +91,10 @@ const CreateAccountView = () => {
         <TextInput
           style={{
             padding: 10,
-            borderColor: "blue",
+            borderRadius: 8,
+            borderColor: "gray",
             borderWidth: 1,
-            borderRadius: 10,
-            fontSize: 26,
-            marginVertical: 10,
-            paddingHorizontal: 20,
-            backgroundColor: "white",
+            marginVertical: 8,
           }}
           placeholder="Email"
           value={email}
@@ -95,13 +104,10 @@ const CreateAccountView = () => {
         <TextInput
           style={{
             padding: 10,
-            borderColor: "blue",
+            borderRadius: 8,
+            borderColor: "gray",
             borderWidth: 1,
-            borderRadius: 10,
-            fontSize: 26,
-            marginVertical: 10,
-            paddingHorizontal: 20,
-            backgroundColor: "white",
+            marginVertical: 8,
           }}
           placeholder="Password"
           value={password}
@@ -112,13 +118,10 @@ const CreateAccountView = () => {
         <TextInput
           style={{
             padding: 10,
-            borderColor: "blue",
+            borderRadius: 8,
+            borderColor: "gray",
             borderWidth: 1,
-            borderRadius: 10,
-            fontSize: 26,
-            marginVertical: 10,
-            paddingHorizontal: 20,
-            backgroundColor: "white",
+            marginVertical: 8,
           }}
           placeholder="Confirm Password"
           value={confirmPassword}
@@ -128,11 +131,10 @@ const CreateAccountView = () => {
       </View>
       <TouchableOpacity
         style={{
-          backgroundColor: "blue",
-          borderRadius: 10,
-          marginTop: 20,
           padding: 10,
-          paddingHorizontal: 40,
+          borderRadius: 10,
+          backgroundColor: "#749BBF",
+          marginTop: 16,
         }}
         onPress={() => {
           console.log(`First Name: ${firstName}`);
@@ -144,9 +146,28 @@ const CreateAccountView = () => {
       >
         <Text
           onPress={() => navigation.navigate("WelcomePage")}
-          style={{ color: "white", fontSize: 18, textAlign: "center" }}
+          style={{
+            color: "white",
+            textAlign: "center",
+            padding: 5,
+            fontSize: 18,
+          }}
         >
           Create Account
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{ padding: 10 }}
+        onPress={() => navigation.navigate("SignInUpView")}
+      >
+        <Text
+          style={{
+            color: "#749BBF",
+            padding: 10,
+            textAlign: "center",
+          }}
+        >
+          Already have an account? Sign In
         </Text>
       </TouchableOpacity>
       <View style={{ flex: 1 }} />

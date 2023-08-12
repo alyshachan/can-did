@@ -164,7 +164,11 @@ export default function App() {
           component={SignInUpView}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="CreateAccountView" component={CreateAccountView} />
+        <Stack.Screen
+          name="CreateAccountView"
+          component={CreateAccountView}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

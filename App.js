@@ -154,7 +154,11 @@ export default function App() {
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="ConfirmPhoto" component={ConfirmPhoto} />
         <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
-        <Stack.Screen name="WelcomeView" component={WelcomeView} />
+        <Stack.Screen
+          name="WelcomeView"
+          component={WelcomeView}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="SignInUpView" component={SignInUpView} />
         <Stack.Screen name="CreateAccountView" component={CreateAccountView} />
       </Stack.Navigator>

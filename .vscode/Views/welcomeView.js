@@ -6,11 +6,17 @@
 //
 
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 
 function WelcomeView({ navigation }) {
   return (
-    <View>
+    <View style={{ alignItems: "center", marginVertical: 200 }}>
+      <Image
+        style={{ width: 200, height: 200, resizeMode: "contain" }}
+        source={{
+          uri: "https://i.ibb.co/9q0rbZZ/Candid-Logo.png",
+        }}
+      />
       <Text
         style={{
           fontFamily: "HelveticaNeue-Bold",
@@ -27,10 +33,10 @@ function WelcomeView({ navigation }) {
         style={{
           fontFamily: "HelveticaNeue-CondensedBlack",
           fontSize: 60,
-          color: "blue",
-          textShadowColor: "gray",
+          color: "black",
+          textShadowColor: "#749BBF",
           textShadowRadius: 2,
-          textShadowOffset: { width: 0, height: 2 },
+          textShadowOffset: { width: 0, height: 3 },
         }}
       >
         CANDID

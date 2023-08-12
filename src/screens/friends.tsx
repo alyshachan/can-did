@@ -13,16 +13,8 @@ import React from "react";
 const Friends = ({ username }) => {
   const navigation = useNavigation();
 
-  const handleToDoList = () => {
-    navigation.navigate("ToDoList"); // Navigate to the ToDoList screen
-  };
-
   return (
     <ScrollView style={styles.scrollView}>
-      <TouchableOpacity onPress={handleToDoList} style={styles.button}>
-        <Text style={styles.buttonText}>To Do List</Text>
-      </TouchableOpacity>
-
       {posts.map((post) => (
         <View style={styles.YstackFull} key={post.id}>
           <View style={styles.Xstack}>

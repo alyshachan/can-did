@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ToDoList from "./src/screens/todo";
 import Friends from "./src/screens/friends";
@@ -13,6 +13,7 @@ import SignInUpView from "./.vscode/Views/SigninView";
 import CreateAccountView from "./.vscode/Views/createAccountView";
 
 const Stack = createNativeStackNavigator();
+// const navigation = useNavigation();
 
 export default function App() {
   return (
@@ -26,18 +27,129 @@ export default function App() {
         <Stack.Screen
           name="Friends"
           component={Friends}
-          options={{
+          options={({ navigation }) => ({
+            title: "FRIENDS",
             headerStyle: {
               backgroundColor: "#749BBF",
             },
-          }}
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <View style={styles.Xstack}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Friends")}
+                >
+                  <FontAwesome name="user" size={20} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ToDoList")}
+                >
+                  <FontAwesome
+                    name="bars"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("NewTaskScreen")}
+                >
+                  <FontAwesome
+                    name="plus"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+              </View>
+            ),
+          })}
         />
         <Stack.Screen
           name="ToDoList"
           component={ToDoList}
-          options={{ headerShown: false }}
+          options={({ navigation }) => ({
+            title: "TO-DO'S",
+            headerStyle: {
+              backgroundColor: "#749BBF",
+            },
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <View style={styles.Xstack}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Friends")}
+                >
+                  <FontAwesome name="user" size={20} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ToDoList")}
+                >
+                  <FontAwesome
+                    name="bars"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("NewTaskScreen")}
+                >
+                  <FontAwesome
+                    name="plus"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+              </View>
+            ),
+          })}
         />
-        <Stack.Screen name="NewTaskScreen" component={NewTaskScreen} />
+        <Stack.Screen
+          name="NewTaskScreen"
+          component={NewTaskScreen}
+          options={({ navigation }) => ({
+            title: "ADD TASK",
+            headerStyle: {
+              backgroundColor: "#749BBF",
+            },
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerRight: () => (
+              <View style={styles.Xstack}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Friends")}
+                >
+                  <FontAwesome name="user" size={20} color="black" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ToDoList")}
+                >
+                  <FontAwesome
+                    name="bars"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("NewTaskScreen")}
+                >
+                  <FontAwesome
+                    name="plus"
+                    size={20}
+                    color="black"
+                    marginLeft={20}
+                  />
+                </TouchableOpacity>
+              </View>
+            ),
+          })}
+        />
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="ConfirmPhoto" component={ConfirmPhoto} />
         <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
@@ -48,3 +160,10 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  Xstack: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+});

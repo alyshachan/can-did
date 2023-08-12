@@ -17,7 +17,7 @@ const WelcomePage = ({ username, activities }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Hello, Whitney!</Text>
+      <Text style={styles.heading}>Hello, SEEDS Girls!</Text>
       <Text style={styles.subHeading}>Activities for today:</Text>
       <FlatList
         data={activities}

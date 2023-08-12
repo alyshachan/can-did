@@ -36,22 +36,25 @@ const SignInUpView = () => {
   const authButtonText = authMode === AuthMode.SignIn ? "Sign In" : "Sign Up";
 
   return (
-    <View style={{ padding: 16 }}>
+    <View style={{ padding: 20, marginVertical: 150 }}>
       <Image
         source={{
-          uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/2048px-Globe_icon.svg.png",
-        }} // Replace with the actual path to the "globe" image
+          uri: "https://i.ibb.co/9q0rbZZ/Candid-Logo.png",
+        }}
         style={{
-          width: 60,
-          height: 60,
-          tintColor: colorScheme === "dark" ? "white" : "blue",
+          width: 100,
+          height: 100,
+          resizeMode: "contain",
+          alignSelf: "center",
         }}
       />
       <Text
         style={{
-          fontSize: 24,
+          fontSize: 30,
           fontWeight: "bold",
-          color: colorScheme === "dark" ? "white" : "blue",
+          color: "#749BBF",
+          alignSelf: "center",
+          margin: 10,
         }}
       >
         {authButtonText}
@@ -87,7 +90,7 @@ const SignInUpView = () => {
         style={{
           padding: 10,
           borderRadius: 10,
-          backgroundColor: colorScheme === "dark" ? "blue" : "blue",
+          backgroundColor: "#749BBF",
           marginTop: 16,
         }}
         onPress={() => {
@@ -98,7 +101,12 @@ const SignInUpView = () => {
       >
         <Text
           onPress={() => navigation.navigate("WelcomePage")}
-          style={{ color: "white", textAlign: "center", padding: 10 }}
+          style={{
+            color: "white",
+            textAlign: "center",
+            padding: 5,
+            fontSize: 18,
+          }}
         >
           {authButtonText}
         </Text>
@@ -106,7 +114,7 @@ const SignInUpView = () => {
       <TouchableOpacity style={{ padding: 10 }} onPress={toggleAuthMode}>
         <Text
           style={{
-            color: colorScheme === "dark" ? "white" : "blue",
+            color: "#749BBF",
             padding: 10,
             textAlign: "center",
           }}

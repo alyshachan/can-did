@@ -159,7 +159,11 @@ export default function App() {
           component={WelcomeView}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="SignInUpView" component={SignInUpView} />
+        <Stack.Screen
+          name="SignInUpView"
+          component={SignInUpView}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="CreateAccountView" component={CreateAccountView} />
       </Stack.Navigator>
     </NavigationContainer>

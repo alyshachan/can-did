@@ -7,6 +7,7 @@
 
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const AuthMode = {
   SignIn: "signIn",
@@ -21,13 +22,14 @@ const SignInUpView = () => {
     useState(false);
 
   const colorScheme = "light"; // Adjust based on your color scheme logic
+  const navigation = useNavigation();
 
   const toggleAuthMode = () => {
     setAuthMode(
       authMode === AuthMode.SignIn ? AuthMode.SignUp : AuthMode.SignIn
     );
     if (authMode === AuthMode.SignIn) {
-      setIsCreateAccountViewPresented(true); // Show the CreateAccountView when switching to Sign Up mode
+      navigation.navigate("CreateAccountView");
     }
   };
 
@@ -36,7 +38,9 @@ const SignInUpView = () => {
   return (
     <View style={{ padding: 16 }}>
       <Image
-        source={require("./globe-icon.png")} // Replace with the actual path to the "globe" image
+        source={{
+          uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/2048px-Globe_icon.svg.png",
+        }} // Replace with the actual path to the "globe" image
         style={{
           width: 60,
           height: 60,
@@ -50,8 +54,7 @@ const SignInUpView = () => {
           color: colorScheme === "dark" ? "white" : "blue",
         }}
       >
-        {" "}
-        {authButtonText}{" "}
+        {authButtonText}
       </Text>
       <TextInput
         style={{
@@ -93,10 +96,12 @@ const SignInUpView = () => {
           console.log(`Email: ${email}, Password: ${password}`);
         }}
       >
-        <Text style={{ color: "white", textAlign: "center", padding: 10 }}>
-          {" "}
-          {authButtonText}{" "}
-        </Text>{" "}
+        <Text
+          onPress={() => navigation.navigate("WelcomePage")}
+          style={{ color: "white", textAlign: "center", padding: 10 }}
+        >
+          {authButtonText}
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity style={{ padding: 10 }} onPress={toggleAuthMode}>
         <Text
@@ -106,14 +111,13 @@ const SignInUpView = () => {
             textAlign: "center",
           }}
         >
-          {" "}
           {authMode === AuthMode.SignIn
             ? "Don't have an account? Sign Up"
-            : "Already have an account? Sign In"}{" "}
-        </Text>{" "}
+            : "Already have an account? Sign In"}
+        </Text>
       </TouchableOpacity>
-      {/* Render CreateAccountView if isCreateAccountViewPresented is true */}{" "}
-      {isCreateAccountViewPresented && <CreateAccountView />}{" "}
+      {/* Render CreateAccountView if isCreateAccountViewPresented is true */}
+      {isCreateAccountViewPresented}
     </View>
   );
 };

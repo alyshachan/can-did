@@ -21,8 +21,8 @@ function WelcomeView({ navigation }) {
           textShadowOffset: { width: 0, height: 2 },
         }}
       >
-        Welcome to{" "}
-      </Text>{" "}
+        Welcome to
+      </Text>
       <Text
         style={{
           fontFamily: "HelveticaNeue-CondensedBlack",
@@ -33,8 +33,8 @@ function WelcomeView({ navigation }) {
           textShadowOffset: { width: 0, height: 2 },
         }}
       >
-        CANDID{" "}
-      </Text>{" "}
+        CANDID
+      </Text>
       <Text
         style={{
           fontFamily: "HelveticaNeue-Medium",
@@ -43,17 +43,16 @@ function WelcomeView({ navigation }) {
           padding: 10,
         }}
       >
-        Tap anywhere to begin{" "}
-      </Text>{" "}
+        Tap anywhere to begin
+      </Text>
       <TouchableOpacity
         style={{ padding: 10 }}
         onPress={() => navigation.navigate("SignInUpView")}
       >
         <View style={{ opacity: 0 }}>
-          {" "}
-          {/* Empty view to handle navigation */}{" "}
-        </View>{" "}
-      </TouchableOpacity>{" "}
+          {/* Empty view to handle navigation */}
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

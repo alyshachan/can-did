@@ -7,6 +7,7 @@
 
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const CreateAccountView = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,6 +15,8 @@ const CreateAccountView = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigation = useNavigation();
 
   return (
     <View style={{ flex: 1, backgroundColor: "#F2F2F7", padding: 16 }}>
@@ -33,12 +36,12 @@ const CreateAccountView = () => {
           style={{
             fontSize: 36,
             fontWeight: "bold",
-            color: "white",
+            color: "black",
             textAlign: "center",
           }}
         >
-          Create Account{" "}
-        </Text>{" "}
+          Create Account
+        </Text>
       </View>
       <View style={{ marginTop: 40 }}>
         <TextInput
@@ -139,11 +142,14 @@ const CreateAccountView = () => {
           console.log(`Confirm Password: ${confirmPassword}`);
         }}
       >
-        <Text style={{ color: "white", fontSize: 18, textAlign: "center" }}>
-          Create Account{" "}
-        </Text>{" "}
+        <Text
+          onPress={() => navigation.navigate("WelcomePage")}
+          style={{ color: "white", fontSize: 18, textAlign: "center" }}
+        >
+          Create Account
+        </Text>
       </TouchableOpacity>
-      <View style={{ flex: 1 }} />{" "}
+      <View style={{ flex: 1 }} />
     </View>
   );
 };

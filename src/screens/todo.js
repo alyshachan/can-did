@@ -18,12 +18,10 @@ const ToDoList = ({ route }) => {
   const [newTodo, setNewTodo] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [photoUploadInProgress, setPhotoUploadInProgress] = useState(false);
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    console.log("todos state:", todos);
     if (selectedOption !== null) {
       handleModalAction(); // Handle the modal action
       setSelectedOption(null); // Reset selectedOption
@@ -32,17 +30,9 @@ const ToDoList = ({ route }) => {
 
   useEffect(() => {
     if (route.params && route.params.newTask) {
-      console.log("Received new task:", route.params.newTask);
       setTodos([...todos, route.params.newTask]);
     }
   }, [route.params]);
-
-  const handleAddTodo = () => {
-    if (newTodo.trim() !== "") {
-      setTodos([...todos, { text: newTodo, checked: false }]);
-      setNewTodo("");
-    }
-  };
 
   const handleToggleTodo = (index) => {
     const updatedTodos = todos.map((todo, i) =>
@@ -52,8 +42,6 @@ const ToDoList = ({ route }) => {
   };
 
   const renderTodoItem = ({ item, index }) => {
-    console.log("Rendering todo item:", item.text, "at index:", index);
-    console.log("todos:", todos); // Add this line
     return (
       <TouchableOpacity
         style={styles.listItemContainer}
@@ -79,7 +67,7 @@ const ToDoList = ({ route }) => {
     );
   };
   const handlePlusClick = () => {
-    setShowModal(true); // Show the modal when the plus sign is pressed
+    setShowModal(true);
     setSelectedOption(null);
   };
 
@@ -87,8 +75,7 @@ const ToDoList = ({ route }) => {
     if (selectedOption === "uploadPhoto") {
       navigation.navigate("Camera");
       setShowModal(false);
-      // Implement the logic for uploading a photo to Candid here
-      // Once the photo upload is complete, setPhotoUploadInProgress(false);
+  
     } else if (selectedOption === "addNewTask") {
       navigation.navigate("NewTaskScreen");
       setShowModal(false);
@@ -104,15 +91,6 @@ const ToDoList = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.goBackButton}
-        >
-          <Feather name="arrow-left" size={24} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.heading}>To-Do List</Text>
-      </View>
       <FlatList
         data={todos}
         renderItem={renderTodoItem}

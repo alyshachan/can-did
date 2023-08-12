@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import {StyleSheet, View, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import ToDoList from "./src/screens/todo";
 import Friends from "./src/screens/friends";
@@ -13,10 +13,14 @@ import WelcomePage from "./src/screens/welcome";
 import WelcomeView from "./.vscode/Views/welcomeView";
 import SignInUpView from "./.vscode/Views/SigninView";
 import CreateAccountView from "./.vscode/Views/createAccountView";
+import { useFonts } from "expo-font";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'GreatVibes-Regular': require("./assets/GreatVibes-Regular.ttf"),
+  });
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="WelcomeView">

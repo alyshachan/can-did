@@ -18,3 +18,8 @@ This app was worked on by Alysha Chan, Shane Zhu, Ibukun Adeloye and Isabella De
 - Shane Zhu (https://github.com/Shane-33)
 - Ibukun Adeloye (https://github.com/TheYorubaCoder/)
 - Isabella DeBoer (https://github.com/ideboer)
+
+# Videos
+
+- Full Design Process (https://drive.google.com/file/d/1gLNdGvY1TRkHvMRT3zrpnRx3L9sp8sN-/view?usp=sharing)
+- Working Prototype (https://drive.google.com/file/d/1Zug4hg0s-S8UrWUDeUK5JxtosgOPcn6a/view?usp=sharing)
